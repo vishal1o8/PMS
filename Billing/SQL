@@ -1,0 +1,44 @@
+
+/*To create Invoice User Table*/
+
+CREATE TABLE `invoice_user` (
+`ID` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`license` varchar(100) NOT NULL,
+`Username` varchar(100) NOT NULL,
+`Password` varchar(100) NOT NULL,
+`first_name` varchar(100) NOT NULL,
+`last_name` varchar(100) NOT NULL,
+`mobile` bigint(20) NOT NULL,
+`address` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+/*To create Invoice Order Table*/
+
+CREATE TABLE `invoice_order` (
+`order_id` int(11) NOT NULL PRIMARY KEY	AUTO_INCREMENT,
+`user_id` int(11) NOT NULL,
+`order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+`order_receiver_name` varchar(250) NOT NULL,
+`order_receiver_address` text NOT NULL,
+`order_total_before_tax` decimal(10,2) NOT NULL,
+`order_total_tax` decimal(10,2) NOT NULL,
+`order_tax_per` varchar(250) NOT NULL,
+`order_total_after_tax` double(10,2) NOT NULL,
+`order_amount_paid` decimal(10,2) NOT NULL,
+`order_total_amount_due` decimal(10,2) NOT NULL,
+`note` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+
+/*To create Invoice Order Item Table*/
+
+CREATE TABLE `invoice_order_item` (
+`order_item_id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`order_id` int(11) NOT NULL,
+`item_code` varchar(250) NOT NULL,
+`item_name` varchar(250) NOT NULL,
+`order_item_quantity` decimal(10,2) NOT NULL,
+`order_item_price` decimal(10,2) NOT NULL,
+`order_item_final_amount` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
